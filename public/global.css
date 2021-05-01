@@ -5,7 +5,7 @@
 }
 
 @font-face {
-    font-family: "Segoe UI.ttf";
+    font-family: "Segoe UI";
     font-weight: normal;
     src: url("font/Segoe UI.ttf");
 }
@@ -20,7 +20,7 @@
 }
 
 body {
-    font-family: "Segoe UI.ttf";
+    font-family: "Segoe UI";
 }
 
 @set sscrollbar {  
