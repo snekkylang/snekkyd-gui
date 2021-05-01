@@ -1,0 +1,9 @@
+/node_modules/
+/public/build/
+/public/scapp.exe
+/public/sciter.dll
+/public/inspector.exe
+/public/lib/snekky.js
+/public/lib/snekkyd.js
+
+.DS_Store
