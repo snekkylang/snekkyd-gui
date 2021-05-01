@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "Consolas";
+    font-weight: normal;
+    src: url("font/Consolas.ttf");
+}
+
+@font-face {
+    font-family: "Segoe UI.ttf";
+    font-weight: normal;
+    src: url("font/Segoe UI.ttf.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-rendering-mode: sub-pixel;
+    vertical-scrollbar: sscrollbar;
+    horizontal-scrollbar: sscrollbar;
+}
+
+body {
+    font-family: "Segoe UI.ttf";
+}
+
+@set sscrollbar {  
+    .next,
+    .prev { 
+        height: 0;
+        display: none;
+    }
+  
+    .base,
+    .next-page, 
+    .prev-page {
+        border-left: solid 1px #393939;
+        background-color: transparent;
+    }
+
+    .slider { 
+        border: 1px solid #393939;
+        background-color: #424242;
+    }
+  
+    .next:disabled, .slider:disabled, .prev:disabled  { 
+        height: 0; 
+        border: none; 
+    }
+    
+    .next:hover, .slider:hover, .prev:hover { 
+        background-color: #4F4F4F; 
+    }
+  
+    .next:active, .slider:active, .prev:active { 
+        background-color: #4F4F4F; 
+    }
+  
+    .base { 
+        width: 15px; 
+    } 
+}
