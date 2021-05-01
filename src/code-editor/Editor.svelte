@@ -1,5 +1,5 @@
 <script>
-    import { beforeUpdate, afterUpdate, onMount } from "svelte";
+    import { afterUpdate } from "svelte";
 
     export let code;
 
@@ -80,17 +80,19 @@
         }
     }
 
-    onMount(updateCode);
-    beforeUpdate(updateCode);
+    console.log(token.position.line);
+
     afterUpdate(updateCode);
 </script>
 
 <pre
     class="editor">
     <div class="lines">
-        {#each {length: token.position.line} as _, i}
-            <div class="line">{i + 1}</div>
-        {/each}
+        {#if code !== ""}
+            {#each {length: token.position.line} as _, i}
+                <div class="line">{i + 1}</div>
+            {/each}
+        {/if}
     </div>
 
     <div class="content">

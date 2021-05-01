@@ -5,9 +5,9 @@
     import WindowButton from "./WindowButton.svelte";
 
     export let onMenuButtonClick;
+    export let windowTitle;
 
     let canExpand = false;
-    let windowTitle = "main.snek - snekkyscript.bite - Snekky Decompiler"
 
     function handleExpandToggle(e) {
         canExpand = !canExpand;

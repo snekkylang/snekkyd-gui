@@ -9,6 +9,8 @@
     let editorTabs = [];
     let code = "";
 
+    let currentFile = "None";
+
     function handleFileChange(name, path) {
         const targetTab = editorTabs.find(tab => tab.path === path);
         const activeTab = editorTabs.find(tab => tab.active);
@@ -31,7 +33,9 @@
         }
 
         editorTabs = editorTabs;
-        code = editorTabs.find(tab => tab.active).code;
+        let currentTab = editorTabs.find(tab => tab.active);
+        code = currentTab.code;
+        currentFile = currentTab.name;
     }
 
     function handleTabClose(name, path) {
@@ -50,6 +54,7 @@
                 const decompiled = SnekkyDecompiler.decompileBase64(content);
                 rootFile = path.split("/").pop();
                 editorTabs = [];
+                code = "";
                 files = decompiled.h;
 
                 break;
@@ -68,7 +73,7 @@
 </script>
 
 <main class="app">
-    <MenuBar onMenuButtonClick={handleMenuButtonClick} />
+    <MenuBar onMenuButtonClick={handleMenuButtonClick} windowTitle={[currentFile, rootFile, "Snekky Decompiler"].join(" - ")} />
 
     <div class="main-content">
         <FileTree {files} {rootFile} onFileChange={handleFileChange} />
