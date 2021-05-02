@@ -14,8 +14,8 @@
     }
 </script>
 
-<div on:click={handleTabChange} class="tab" class:active>
-    <div class="name">{name}</div>
+<div class="tab" class:active>
+    <div on:click={handleTabChange} class="name">{name}</div>
     <div on:click={handleTabClose} class="close">&times;</div>
 </div>
 
@@ -23,12 +23,11 @@
     .tab {
         background-color: #2D2D2D;
         color: #969696;
-        padding: 8px 10px 8px 30px;
+/*         padding: 8px 10px 8px 30px; */
         background-image: url("../img/file-tree/default_file.png");
         background-repeat: no-repeat;
         background-position: 10px center;
         flow: horizontal;
-        behavior: button;
         border-right: solid 1px #252526;
         cursor: pointer;
     }
@@ -38,7 +37,8 @@
     }
 
     .name {
-        padding-right: 10px;
+        padding: 8px 0 8px 30px;
+        behavior: button;
     }
 
     .close {
@@ -46,6 +46,7 @@
         line-height: 16px;
         visibility: hidden;
         behavior: button;
+        padding: 8px 10px 8px 10px;
     }
 
     .tab:hover .close {

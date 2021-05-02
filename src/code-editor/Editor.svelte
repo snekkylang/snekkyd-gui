@@ -103,6 +103,10 @@
 </pre>
 
 <style>
+    .content {
+        behavior: selectable;
+    }
+
     .editor {
         height: 1*;
         width: 1*;

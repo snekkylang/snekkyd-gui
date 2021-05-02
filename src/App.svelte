@@ -25,6 +25,7 @@
     }
 
     function handleFileChange(name, path) {
+        console.log("change");
         const targetTab = editorTabs.find(tab => tab.path === path);
         const activeTab = editorTabs.find(tab => tab.active);
 
@@ -52,6 +53,27 @@
     }
 
     function handleTabClose(name, path) {
+        let targetTab;
+        let targetTabIndex;
+
+        for (let i = 0; i < editorTabs.length; i++) {
+            if (editorTabs[i].path === path) {
+                targetTab = editorTabs[i];
+                targetTabIndex = i;
+            }
+        }
+
+        if (targetTab.active) {
+            if (targetTabIndex > 0) {
+                handleFileChange(editorTabs[targetTabIndex - 1].name, editorTabs[targetTabIndex - 1].path);
+            } else if (targetTabIndex === 0 && editorTabs.length > 1) {
+                handleFileChange(editorTabs[1].name, editorTabs[1].path);
+            } else {
+                code = "";
+                currentFile = "None";
+            }
+        }
+
         editorTabs = [...editorTabs.filter(tab => tab.path !== path)];
     }
 
