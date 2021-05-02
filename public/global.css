@@ -57,5 +57,9 @@ body {
   
     .base { 
         width: 15px; 
-    } 
+    }
+
+    .corner { 
+        background-color: transparent; 
+    }
 }
