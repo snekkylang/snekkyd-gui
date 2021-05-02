@@ -10,7 +10,6 @@
     let root = [];
 
     function updateTree() {
-        console.log("ok");
         root = Object.keys(files).reduce((r, p) => {
             const names = p.split("/");
             names.reduce((q, name) => {

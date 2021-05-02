@@ -25,7 +25,6 @@
     }
 
     function handleFileChange(name, path) {
-        console.log("change");
         const targetTab = editorTabs.find(tab => tab.path === path);
         const activeTab = editorTabs.find(tab => tab.active);
 

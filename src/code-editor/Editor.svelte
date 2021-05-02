@@ -80,8 +80,6 @@
         }
     }
 
-    console.log(token.position.line);
-
     afterUpdate(updateCode);
 </script>
 
