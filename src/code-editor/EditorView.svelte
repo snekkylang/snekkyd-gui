@@ -22,6 +22,8 @@
     .tabs {
         flow: horizontal;
         background-color: #252526;
+        width: 1*;
+        overflow: hidden;
     }
 
     .editor {
