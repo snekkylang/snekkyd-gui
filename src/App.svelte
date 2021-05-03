@@ -83,7 +83,8 @@
                 if (path === null) {
                     return;
                 }
-                path = path.replace("file://", "");
+                path = path.replace("file://", "")
+                    .replace("%20", " ");
 
                 const content = btoa(String.fromCharCode.apply(null, new Uint8Array(fs.$readfile(path))));
                 const decompiled = SnekkyDecompiler.decompileBase64(content);
@@ -99,7 +100,7 @@
                 if (baseDir === null) {
                     return;
                 }
-                baseDir = `${baseDir.replace("file://", "")}/${rootFile}`;
+                baseDir = `${baseDir.replace("file://", "").replace("%20", " ")}/${rootFile}`;
 
                 let createDirRecursive = (base, path) => {
                     const pathParts = path.split("/");
