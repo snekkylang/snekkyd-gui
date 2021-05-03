@@ -1,6 +1,6 @@
 # Snekky Decompiler GUI
 
-A GUI frontend for [snekkyd](https://github.com/snekkylang/snekkyd-gui) made with [Sciter](https://sciter.com/). It allows you to decompile Snekky bytecode files (`.bite` extension) and browse their contents in VSCode-like interface.
+A GUI frontend for [snekkyd](https://github.com/snekkylang/snekkyd-gui) made with [Sciter](https://sciter.com/). It allows you to decompile Snekky bytecode files (`.bite` extension) and browse their contents a in VSCode-like interface.
 
 ## Screenshots
 ![Screenshot](assets/screenshot.png)
