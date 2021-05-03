@@ -1,0 +1,1 @@
+copy /b 7zSD.sfx + config.txt + public.7z "Snekky Decompiler.exe"
