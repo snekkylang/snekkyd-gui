@@ -19,10 +19,6 @@
     horizontal-scrollbar: sscrollbar;
 }
 
-body {
-    font-family: "Segoe UI";
-}
-
 @set sscrollbar {  
     .next,
     .prev { 
