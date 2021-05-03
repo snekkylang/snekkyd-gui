@@ -79,10 +79,11 @@
     async function handleMenuButtonClick(identifier) {
         switch (identifier) {
             case "file.open-file": {
-                const path = Window.this.selectFile().replace("file://", "");
+                let path = Window.this.selectFile();
                 if (path === null) {
                     return;
                 }
+                path = path.replace("file://", "");
 
                 const content = btoa(String.fromCharCode.apply(null, new Uint8Array(fs.$readfile(path))));
                 const decompiled = SnekkyDecompiler.decompileBase64(content);
@@ -90,6 +91,31 @@
                 editorTabs = [];
                 code = "";
                 files = decompiled.h;
+
+                break;
+            }
+            case "file.save-files": {
+                let baseDir = Window.this.selectFolder();
+                if (baseDir === null) {
+                    return;
+                }
+                baseDir = `${baseDir.replace("file://", "")}/${rootFile}`;
+
+                let createDirRecursive = (base, path) => {
+                    const pathParts = path.split("/");
+                    for (let i = 0; i < pathParts.length + 1; i++) {
+                        console.log(`${pathParts.slice(0, i).join("/")}`);
+                        fs.$mkdir(`${base}/${pathParts.slice(0, i).join("/")}`);
+                    }
+                }
+                
+                for (let filePath in files) {
+                    let content = files[filePath];
+                    const fileDir = filePath.substring(0, filePath.lastIndexOf("/"));
+                    createDirRecursive(baseDir, fileDir);
+                    const file = await fs.open(`${baseDir}/${filePath}`, "w+", 0o666);
+                    await file.write(content, "utf-8");
+                }
 
                 break;
             }

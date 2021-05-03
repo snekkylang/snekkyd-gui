@@ -12,6 +12,7 @@
     <ul class="window-menu-bar">
         <MenuBarItem title="File">
             <MenuPopupItem text="Open file..." identifier="file.open-file" onClick={onMenuButtonClick} keyCombination="CTRL+O" />
+            <MenuPopupItem text="Save as..." identifier="file.save-files" onClick={onMenuButtonClick} keyCombination="CTRL+S" />
             <MenuPopupDivider />
             <MenuPopupItem text="Exit" identifier="file.exit" onClick={onMenuButtonClick} />
         </MenuBarItem>
