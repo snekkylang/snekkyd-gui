@@ -9,27 +9,27 @@
     }
 </script>
 
-<div class="item" on:click={handleClick}>
-    <div class="text">{text}</div>
-    <div class="key">{keyCombination}</div>
-</div>
+<li class="item" on:click={handleClick}>{text} <span class="key">{keyCombination}</span></li>
 
 <style>
-    .item {
+    .item {  
+        width: 1*;
+        display: block;
+        flow: horizontal;
         color: #CCCCCC;
-        behavior: button;
         font-weight: 500;
         padding: 3px 20px;
-        flow: horizontal;
-        behavior: button;
+        behavior: menu-bar;
     }
 
-    .item:hover {
+    .item:hover {  
         background-color: #094771;
         color: white;
     }
 
-    .text {
-        width: 1*;
+    .key {
+        display: block;
+        white-space: nowrap;
+        margin-left: 1*; 
     }
 </style>

@@ -1,31 +1,25 @@
 <script>
+    import WindowButton from "./WindowButton.svelte";
     import MenuBarItem from "./MenuBarItem.svelte";
     import MenuPopupItem from "./popup/MenuPopupItem.svelte";
     import MenuPopupDivider from "./popup/MenuPopupDivider.svelte";
-    import WindowButton from "./WindowButton.svelte";
 
     export let onMenuButtonClick;
     export let windowTitle;
-
-    let canExpand = false;
-
-    function handleExpandToggle(e) {
-        canExpand = !canExpand;
-    }
 </script>
 
 <div class="menu" role="window-caption">
-    <div class="window-menu-bar" on:click={handleExpandToggle}>
-        <MenuBarItem text="File" {canExpand}>
+    <ul class="window-menu-bar">
+        <MenuBarItem title="File">
             <MenuPopupItem text="Open file..." identifier="file.open-file" onClick={onMenuButtonClick} keyCombination="CTRL+O" />
             <MenuPopupDivider />
             <MenuPopupItem text="Exit" identifier="file.exit" onClick={onMenuButtonClick} />
         </MenuBarItem>
 
-        <MenuBarItem text="Help" {canExpand}>
+        <MenuBarItem title="Help">
             <MenuPopupItem text="Info" identifier="help.info" onClick={onMenuButtonClick} />
         </MenuBarItem>
-    </div>
+    </ul>
 
     <div class="window-title">{windowTitle}</div>
 
@@ -42,7 +36,9 @@
         width: 100%;
         flow: horizontal;
     }
+
     .window-menu-bar {
+        behavior: menu-bar;
         flow: horizontal;
     }
 
