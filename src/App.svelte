@@ -47,7 +47,6 @@
             const newTab = {
                 name,
                 path,
-                code: files[path],
                 active: true
             };
 
@@ -56,7 +55,7 @@
 
         editorTabs = editorTabs;
         let currentTab = editorTabs.find(tab => tab.active);
-        code = currentTab.code;
+        code = files[currentTab.path];
         currentFile = {
             name: currentTab.name,
             path: currentTab.path
@@ -89,6 +88,10 @@
         }
 
         editorTabs = [...editorTabs.filter(tab => tab.path !== path)];
+    }
+
+    function handleCodeChange(code) {
+        files[currentFile.path] = code;
     }
 
     async function handleMenuButtonClick(identifier) {
@@ -225,7 +228,7 @@
         </MenuBarItem>
 
         <MenuBarItem title="Run">
-            <MenuPopupItem text="Run..." identifier="run.run" onClick={handleMenuButtonClick} disabled={currentFile.path === null} />
+            <MenuPopupItem text="Run..." identifier="run.run" onClick={handleMenuButtonClick} keyCombination="F5" disabled={currentFile.path === null} />
             <MenuPopupItem text="Recompile" identifier="run.recompile" onClick={handleMenuButtonClick} disabled={currentFile.path === null} />
         </MenuBarItem>
 
@@ -236,7 +239,7 @@
 
     <div class="main-content">
         <FileTree {files} {rootFile} onFileChange={handleFileChange} />
-        <EditorView {logShown} {logContent} {code} {editorTabs} onFileChange={handleFileChange} onTabClose={handleTabClose} />
+        <EditorView {logShown} {logContent} {code} {editorTabs} onFileChange={handleFileChange} onTabClose={handleTabClose} onCodeChange={handleCodeChange} />
     </div>
 </main>
 

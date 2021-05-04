@@ -4,12 +4,6 @@
     src: url("font/Consolas.ttf");
 }
 
-@font-face {
-    font-family: "Segoe UI";
-    font-weight: normal;
-    src: url("font/Segoe UI.ttf");
-}
-
 * {
     margin: 0;
     padding: 0;

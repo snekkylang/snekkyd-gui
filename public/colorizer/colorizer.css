@@ -1,0 +1,48 @@
+@set colorizer < std-plaintext {
+    :root {
+        aspect: colorize url("colorizer.js");
+        overflow: auto;
+        background-color: #1E1E1E;
+        width: 1*;
+        border: none;
+        padding: 10px;
+        list-style-type: decimal;
+    }
+
+    text {
+        white-space: pre;
+        color: #D4D4D4;
+    }
+
+    text::highlight(number) {
+        color: #B5CEA8;
+    }
+
+    text::highlight(string) {
+        color: #CE9178;
+    }
+
+    text::highlight(keyword1) {
+        color: #5499D2;
+    }
+
+    text::highlight(keyword2) {
+        color: #C586C0;
+    }
+
+    text::highlight(ident) {
+        color: #9CDCFE;
+    }
+
+    text::highlight(comment) {
+        color: #638F50;
+    }
+
+    text::highlight(closure) {
+        color: #4EC9B0;
+    }
+}
+
+plaintext[type] {
+    style-set: colorizer;
+}

@@ -6,6 +6,7 @@
     export let editorTabs;
     export let onFileChange;
     export let onTabClose;
+    export let onCodeChange;
     export let code;
     export let logShown;
     export let logContent;
@@ -18,7 +19,7 @@
         {/each}
     </div>
 
-    <Editor {code} />
+    <Editor {onCodeChange} {code} />
 
     <Log shown={logShown} content={logContent} />
 </div>
