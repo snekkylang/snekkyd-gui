@@ -2,14 +2,17 @@
     export let text;
     export let keyCombination = "";
     export let identifier;
+    export let disabled = false;
     export let onClick;
 
     function handleClick(e) {
-        onClick(identifier);
+        if (!disabled) {
+            onClick(identifier);
+        }
     }
 </script>
 
-<li class="item" on:click={handleClick}>{text} <span class="key">{keyCombination}</span></li>
+<li class="item" class:disabled on:click={handleClick}>{text} <span class="key">{keyCombination}</span></li>
 
 <style>
     .item {  
@@ -22,7 +25,12 @@
         behavior: menu-bar;
     }
 
-    .item:hover {  
+    .disabled {
+        color: #686868;
+        behavior: disabled;   
+    }
+
+    .item:not(.disabled):hover {  
         background-color: #094771;
         color: white;
     }

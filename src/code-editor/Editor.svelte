@@ -83,8 +83,7 @@
     afterUpdate(updateCode);
 </script>
 
-<pre
-    class="editor">
+<pre class="editor">
     <div class="lines">
         {#if code !== ""}
             {#each {length: token.position.line} as _, i}
