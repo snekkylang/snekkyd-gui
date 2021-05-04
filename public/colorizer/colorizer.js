@@ -43,7 +43,6 @@ export function colorize() {
                     break;
                 }
                 case "name": {
-/*                     console.log(tz.tokenPos); */
                     const val = tz.tokenValue;
 
                     if (/^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/.test(val)) {
@@ -52,6 +51,8 @@ export function colorize() {
                         tz.tokenRange.highlight("keyword1");
                     } else if (keywords2[val]) {
                         tz.tokenRange.highlight("keyword2");
+                    } else if (tz.tokenRange.startContainer.textContent.charAt(tz.tokenRange.endOffset) === "(") {
+                        tz.tokenRange.highlight("call");
                     } else {
                         tz.tokenRange.highlight("ident");
                     }

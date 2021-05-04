@@ -41,6 +41,10 @@
     text::highlight(closure) {
         color: #4EC9B0;
     }
+
+    text::highlight(call) {
+        color: #DCDCAA;
+    }
 }
 
 plaintext[type] {

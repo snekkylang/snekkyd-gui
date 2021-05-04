@@ -31,11 +31,7 @@
         border-right: solid 1px #252526;
         cursor: pointer;
     }
-
-    .tab:last-of-type {
-        border-right: none;
-    }
-
+    
     .name {
         padding: 8px 0 8px 30px;
         behavior: button;
