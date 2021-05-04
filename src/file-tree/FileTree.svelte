@@ -1,5 +1,5 @@
 <script>
-    import { afterUpdate, onMount } from 'svelte';
+    import { afterUpdate } from "svelte";
 
     export let files;
     export let rootFile;
@@ -26,7 +26,6 @@
         }, []);
     }
 
-    onMount(updateTree);
     afterUpdate(updateTree);
 </script>
 
@@ -39,5 +38,7 @@
         width: 220px;
         height: 1*;
         background-color: #252526;
+        resize: horizontal;
+        overflow: auto;
     }
 </style>

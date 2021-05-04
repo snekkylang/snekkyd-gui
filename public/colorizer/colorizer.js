@@ -43,6 +43,7 @@ export function colorize() {
                     break;
                 }
                 case "name": {
+/*                     console.log(tz.tokenPos); */
                     const val = tz.tokenValue;
 
                     if (/^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/.test(val)) {
