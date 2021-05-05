@@ -36,6 +36,7 @@
     }
 
     .key {
+        padding-left: 10px;
         display: block;
         white-space: nowrap;
         margin-left: 1*; 

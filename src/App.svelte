@@ -228,7 +228,7 @@
         </MenuBarItem>
 
         <MenuBarItem title="Run">
-            <MenuPopupItem text="Run..." identifier="run.run" onClick={handleMenuButtonClick} keyCombination="F5" disabled={currentFile.path === null} />
+            <MenuPopupItem text="Run current file..." identifier="run.run" onClick={handleMenuButtonClick} keyCombination="F5" disabled={currentFile.path === null} />
             <MenuPopupItem text="Recompile" identifier="run.recompile" onClick={handleMenuButtonClick} disabled={currentFile.path === null} />
         </MenuBarItem>
 
