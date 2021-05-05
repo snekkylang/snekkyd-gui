@@ -32,6 +32,7 @@
 
     .window-buttons {
         flow: horizontal;
+        height: 1*;
     }
 
     .window-title {
