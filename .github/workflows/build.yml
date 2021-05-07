@@ -18,7 +18,7 @@ jobs:
       - name: Build snekkyd
         run: |
           cd snekkyd
-          haxelib install hxcpp
+          haxelib install hxcpp --quiet
           haxe build-js.hxml
           copy .\js\snekkyd.js ..\public\lib\
       - name: Install NPM dependencies
