@@ -17,7 +17,7 @@ jobs:
       - name: Package artifact
         run: |
           cd tools/build/windows
-          build.bat
+          .\build.bat
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
