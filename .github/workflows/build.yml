@@ -1,0 +1,41 @@
+name: snekkyd-gui
+
+on: [push]
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: true
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.2.0
+      - name: Build snekkyd
+        run: |
+          cd snekkyd
+          haxelib install hxcpp
+          haxe build-js.hxml
+          copy .\js\snekkyd.js ..\public\lib\
+      - name: Install NPM dependencies
+        run: npm install
+      - name: Build Svelte
+        run: npm run build
+      - name: Download Resource Hacker
+        run: |
+          cd tools/build/windows
+          curl http://www.angusj.com/resourcehacker/resource_hacker.zip --output resource_hacker.zip
+          7z e resource_hacker.zip
+      - name: Package artifact
+        run: | 
+          cd tools/build/windows
+          .\build.bat
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: snekkyd-gui-win
+          path: "tools/build/windows/Snekky Decompiler.exe"
