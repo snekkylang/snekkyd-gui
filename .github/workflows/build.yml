@@ -18,7 +18,7 @@ jobs:
         run: |
           cd tools/build/windows
           curl http://www.angusj.com/resourcehacker/resource_hacker.zip --output resource_hacker.zip
-          7z e esource_hacker.zip
+          7z e resource_hacker.zip
       - name: Package artifact
         run: .\build.bat
       - name: Upload artifact
