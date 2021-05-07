@@ -27,4 +27,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: snekkyd-gui-win
-          path: cpp/snekky.exe
+          path: "tools/build/windows/Snekky Decompiler.exe"
