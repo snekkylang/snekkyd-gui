@@ -1,0 +1,10 @@
+[FILENAMES]
+Open = decompiler_sfx.exe
+Save = "Snekky Decompiler.exe"
+Log = CONSOLE
+
+[COMMANDS]
+-delete ICONGROUP,1,1033
+-addoverwrite logo.ico,ICONGROUP,MAINICON,0
+-addoverwrite Manifest.res
+-addoverwrite VersionInfo.res
