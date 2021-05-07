@@ -1,0 +1,25 @@
+name: snekkyd-gui
+
+on: [push]
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: Install dependencies
+        run: npm install
+      - name: Build Svelte
+        run: npm run build
+      - name: Package artifact
+        run: |
+          cd tools/build/windows
+          build.bat
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: snekkyd-gui-win
+          path: cpp/snekky.exe
