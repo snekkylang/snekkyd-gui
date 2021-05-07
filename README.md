@@ -7,4 +7,4 @@ A GUI frontend for [snekkyd](https://github.com/snekkylang/snekkyd-gui) made wit
 
 
 ## Installation
-Download the latest version for your operating system of choice from the [releases page](https://github.com/snekkylang/snekkyd-gui/releases).
+Download the latest version for your operating system of choice from the [releases page](https://github.com/snekkylang/snekkyd-gui/releases) or the latest build from the [actions tab](https://github.com/snekkylang/snekkyd-gui/actions).
