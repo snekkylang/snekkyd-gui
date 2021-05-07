@@ -6,7 +6,6 @@
     import MenuPopupItem from "./menu/popup/MenuPopupItem.svelte";
     import MenuPopupDivider from "./menu/popup/MenuPopupDivider.svelte";
 
-    let logShown = false;
     let logContent = [];
 
     let rootFile = "Project";
@@ -237,15 +236,21 @@
         </MenuBarItem>
     </MenuBar>
 
-    <div class="main-content">
+    <frameset cols="auto, *" class="main-content">
         <FileTree {files} {rootFile} onFileChange={handleFileChange} />
-        <EditorView {logShown} {logContent} {code} {editorTabs} onFileChange={handleFileChange} onTabClose={handleTabClose} onCodeChange={handleCodeChange} />
-    </div>
+        <splitter />
+        <EditorView {logContent} {code} {editorTabs} onFileChange={handleFileChange} onTabClose={handleTabClose} onCodeChange={handleCodeChange} />
+    </frameset>
 </main>
 
 <style>
     .app {
         height: 100vh;
+    }
+
+    splitter:hover,
+    splitter {
+        background: #252526;
     }
 
     .main-content {

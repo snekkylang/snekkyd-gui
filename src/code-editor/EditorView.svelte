@@ -8,7 +8,6 @@
     export let onTabClose;
     export let onCodeChange;
     export let code;
-    export let logShown;
     export let logContent;
 </script>
 
@@ -19,9 +18,11 @@
         {/each}
     </div>
 
-    <Editor {onCodeChange} {code} />
-
-    <Log shown={logShown} content={logContent} />
+    <frameset rows="*, auto">
+        <Editor {onCodeChange} {code} />
+        
+        <Log content={logContent} />
+    </frameset>
 </div>
 
 <style>

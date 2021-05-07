@@ -7,6 +7,7 @@
 </script>
 
 {#if content.length > 0}
+    <splitter />
     <div class="log">
         <div class="buttons">
             <div class="button" on:click={handleLogClose}>&times;</div>   
@@ -20,10 +21,16 @@
 {/if}
 
 <style>
+    splitter:hover,
+    splitter {
+        background: transparent;
+    }
+
     .log {
         border-top: solid 1px #414141;
         width: 1*;
         height: 200px;
+        min-height: 80px;
         flow: vertical;
     }
 
