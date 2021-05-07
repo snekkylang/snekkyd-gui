@@ -17,7 +17,7 @@
 
 <pre class="editor">
     <div class="content">
-        <plaintext type="text/snekky" bind:this={editorElement}></plaintext>
+        <plaintext type="text/snekky" readonly={code === ""} bind:this={editorElement}></plaintext>
     </div>
 </pre>
 
