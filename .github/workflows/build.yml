@@ -14,10 +14,13 @@ jobs:
         run: npm install
       - name: Build Svelte
         run: npm run build
-      - name: Package artifact
+      - name: Download Resource Hacker
         run: |
           cd tools/build/windows
-          .\build.bat
+          curl http://www.angusj.com/resourcehacker/resource_hacker.zip --output resource_hacker.zip
+          7z e esource_hacker.zip
+      - name: Package artifact
+        run: .\build.bat
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
