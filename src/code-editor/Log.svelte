@@ -24,6 +24,7 @@
     splitter:hover,
     splitter {
         background: transparent;
+        margin-bottom: -5px;
     }
 
     .log {

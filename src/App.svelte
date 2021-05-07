@@ -250,7 +250,8 @@
 
     splitter:hover,
     splitter {
-        background: #252526;
+        margin-left: -5px;
+        background: transparent;
     }
 
     .main-content {
