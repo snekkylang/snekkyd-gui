@@ -37,6 +37,7 @@
     .tree {
         width: 220px;
         min-width: 150px;
+        max-width: 90vw;
         height: 1*;
         background-color: #252526;
         resize: horizontal;
