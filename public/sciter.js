@@ -16,9 +16,7 @@ window.readPipe = async (pipe) => {
             var text = decode(buffer);
             out = text.split(/\r?\n/);
         }
-    } catch (e) {
-        console.log(e);
-    }
+    } catch (e) {}
 
     return out;
 }
