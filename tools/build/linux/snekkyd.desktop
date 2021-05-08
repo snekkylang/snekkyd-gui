@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Snekky Decompiler
+Exec=scapp
+Icon=icon
+Type=Application
+Comment=Decompiler for Snekky bytecode files
+Categories=Utility;

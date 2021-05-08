@@ -39,3 +39,35 @@ jobs:
         with:
           name: snekkyd-gui-win
           path: "tools/build/windows/Snekky Decompiler.exe"
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: true
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.2.0
+      - name: Build snekkyd
+        run: |
+          cd snekkyd
+          haxelib install hxcpp --quiet
+          haxe build-js.hxml
+          cp js\snekkyd.js ..\public\lib\
+      - name: Install NPM dependencies
+        run: npm install
+      - name: Build Svelte
+        run: npm run build
+      - name: Package artifact
+        run: | 
+          cd tools/build/linux
+          chmod +x build.sh
+          ./build.sh
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: snekkyd-gui-linux
+          path: "tools/build/windows/Snekky_Decompiler-x86_64.AppImage"
