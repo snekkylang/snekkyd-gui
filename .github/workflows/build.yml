@@ -56,7 +56,7 @@ jobs:
           cd snekkyd
           haxelib install hxcpp --quiet
           haxe build-js.hxml
-          cp js\snekkyd.js ..\public\lib\
+          cp js/snekkyd.js ../public/lib\
       - name: Install NPM dependencies
         run: npm install
       - name: Build Svelte
