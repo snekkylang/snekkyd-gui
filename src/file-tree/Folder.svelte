@@ -49,7 +49,7 @@
     }
 
     .root {
-        font-weight: medium;
+        font-weight: 600;
     }
 
     ul {

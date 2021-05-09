@@ -4,6 +4,12 @@
     src: url("font/Consolas.ttf");
 }
 
+@font-face {
+    font-family: "Lato";
+    font-weight: normal;
+    src: url("font/Lato-Regular.ttf");
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +17,7 @@
     font-rendering-mode: sub-pixel;
     vertical-scrollbar: sscrollbar;
     horizontal-scrollbar: sscrollbar;
+    font-family: "Lato";
 }
 
 @set sscrollbar {  
