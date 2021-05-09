@@ -16,6 +16,7 @@
         text-align: center;
         font-size: 20px;
         vertical-align: center;
+        font-family: unset;
     }
 
     .button:hover {

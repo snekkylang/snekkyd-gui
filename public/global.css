@@ -17,6 +17,9 @@
     font-rendering-mode: sub-pixel;
     vertical-scrollbar: sscrollbar;
     horizontal-scrollbar: sscrollbar;
+}
+
+body {
     font-family: "Lato";
 }
 

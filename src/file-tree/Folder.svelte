@@ -48,10 +48,6 @@
         background-image: url("../img/file-tree/default_folder_opened.png");
     }
 
-    .root {
-        font-weight: 600;
-    }
-
     ul {
         list-style: none;
     }
