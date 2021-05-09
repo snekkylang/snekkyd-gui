@@ -20,7 +20,6 @@
         display: block;
         flow: horizontal;
         color: #CCCCCC;
-        font-weight: 500;
         padding: 3px 20px;
         behavior: menu-bar;
     }
@@ -39,6 +38,7 @@
         padding-left: 10px;
         display: block;
         white-space: nowrap;
-        margin-left: 1*; 
+        margin-left: 1*;
+        font-family: monospace;
     }
 </style>
