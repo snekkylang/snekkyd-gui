@@ -23,7 +23,6 @@
     .tab {
         background-color: #2D2D2D;
         color: #969696;
-/*         padding: 8px 10px 8px 30px; */
         background-image: url("../img/file-tree/default_file.png");
         background-repeat: no-repeat;
         background-position: 10px center;
@@ -35,6 +34,7 @@
     .name {
         padding: 8px 0 8px 30px;
         behavior: button;
+        white-space: nowrap;
     }
 
     .close {

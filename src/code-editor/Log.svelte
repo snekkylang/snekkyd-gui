@@ -1,6 +1,8 @@
 <script>
     export let content;
 
+    const ansiUp = new AnsiUp();
+
     function handleLogClose(e) {
         content = [];
     }
@@ -14,7 +16,7 @@
         </div>
         <div class="content">
             {#each content as line}
-                <pre class="line">{line}</pre>
+                <pre class="line">{@html ansiUp.ansi_to_html(line)}</pre>
             {/each}
         </div>
     </div>
