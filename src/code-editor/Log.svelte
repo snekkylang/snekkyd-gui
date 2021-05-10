@@ -60,5 +60,6 @@
 
     .line {
         color: #CCCCCC;
+        font-family: monospace;
     }
 </style>
