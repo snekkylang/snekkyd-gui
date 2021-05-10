@@ -5,6 +5,7 @@
     import MenuBarItem from "./menu/MenuBarItem.svelte";
     import MenuPopupItem from "./menu/popup/MenuPopupItem.svelte";
     import MenuPopupDivider from "./menu/popup/MenuPopupDivider.svelte";
+import { afterUpdate } from "svelte";
 
     let logContent = [];
 
@@ -93,6 +94,23 @@
         files[currentFile.path] = code;
     }
 
+    function openBytecodeFile(path) {
+        const content = btoa(String.fromCharCode.apply(null, new Uint8Array(fs.$readfile(path))));
+        const decompiled = SnekkyDecompiler.decompileBase64(content);
+        rootFile = path.split("/").pop();
+        editorTabs = [];
+        code = "";
+        currentFile = {
+            name: "None",
+            path: null
+        };
+        files = decompiled.h;
+    }
+
+    function applyPathFixes(path) {
+        return path.replace("file://", "").replace("%20", " ");
+    }
+
     async function handleMenuButtonClick(identifier) {
         async function saveFiles(baseDir) {
             let createDirRecursive = (base, path) => {
@@ -121,8 +139,7 @@
             if (path === null) {
                 return null;
             }
-            path = path.replace("file://", "")
-                .replace("%20", " ");
+            path = applyPathFixes(path);
                 
             return path;
         }
@@ -138,16 +155,7 @@
                     return;
                 }
 
-                const content = btoa(String.fromCharCode.apply(null, new Uint8Array(fs.$readfile(path))));
-                const decompiled = SnekkyDecompiler.decompileBase64(content);
-                rootFile = path.split("/").pop();
-                editorTabs = [];
-                code = "";
-                currentFile = {
-                    name: "None",
-                    path: null
-                };
-                files = decompiled.h;
+                openBytecodeFile(path);
 
                 break;
             }
@@ -215,6 +223,14 @@
             }
         }
     }
+
+    dropZone({ 
+        container: document,
+        accept: "*.bite",
+        ondrop: function(files) { 
+            openBytecodeFile(applyPathFixes(files[0]));
+        }
+    });
 </script>
 
 <main class="app">
@@ -257,6 +273,5 @@
     .main-content {
         flow: horizontal;
         height: 1*;
-        background-color: green;
     }
 </style>
