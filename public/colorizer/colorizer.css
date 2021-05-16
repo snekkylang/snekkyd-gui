@@ -6,7 +6,6 @@
         width: 1*;
         border: none;
         padding: 10px 10px 10px 5px;
-        list-style-type: decimal;
         tab-size: 4;
         font-family: "Consolas";
         overflow: auto
@@ -16,6 +15,8 @@
         white-space: pre;
         color: #D4D4D4;
         background-color: transparent;
+        list-marker-color: #858585 !important;
+        list-style-type: index;
     }
 
     text::highlight(number) {
