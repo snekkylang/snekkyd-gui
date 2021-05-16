@@ -15,32 +15,18 @@
     });
 </script>
 
-<pre class="editor">
-    <div class="content">
-        <plaintext type="text/snekky" readonly={code === ""} bind:this={editorElement}></plaintext>
-    </div>
-</pre>
+<div class="wrapper">
+    <plaintext linenumbers="on" class:hidden={code === ""} type="text/snekky" bind:this={editorElement}></plaintext>
+</div>
 
 <style>
-    .content {
-        behavior: selectable;
-        font-family: "Consolas";
+    .wrapper {
         height: 1*;
         width: 1*;
+        background-color: #1E1E1E;
     }
 
-    .editor {
-        height: 1*;
-        width: 1*;
-        flow: horizontal;
-        overflow: auto;
+    .hidden {
+        display: none;
     }
-
-/*     .line {
-        font-family: "Consolas";
-        font-size: 14px;
-        text-align: right;
-        color: #858585;
-        padding: 0 15px 0 5px;
-    } */
 </style>

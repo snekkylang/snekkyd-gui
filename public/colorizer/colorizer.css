@@ -1,4 +1,4 @@
-@set colorizer < std-plaintext {
+@set colorizer < std-plaintext-numbers {
     :root {
         aspect: colorize url("colorizer.js");
         overflow: auto;
@@ -8,11 +8,14 @@
         padding: 10px 10px 10px 5px;
         list-style-type: decimal;
         tab-size: 4;
+        font-family: "Consolas";
+        overflow: auto
     }
 
     text {
         white-space: pre;
         color: #D4D4D4;
+        background-color: transparent;
     }
 
     text::highlight(number) {
