@@ -5,7 +5,8 @@
     import MenuBarItem from "./menu/MenuBarItem.svelte";
     import MenuPopupItem from "./menu/popup/MenuPopupItem.svelte";
     import MenuPopupDivider from "./menu/popup/MenuPopupDivider.svelte";
-import { afterUpdate } from "svelte";
+
+    let snekkyInstalled = false;
 
     let logContent = [];
 
@@ -14,7 +15,6 @@ import { afterUpdate } from "svelte";
 
     let editorTabs = [];
     let code = "";
-
     let currentFile = {
         name: "None",
         path: null
@@ -61,6 +61,20 @@ import { afterUpdate } from "svelte";
             path: currentTab.path
         };
     }
+
+    function checkSnekkyInstallation() {
+        try {
+            spawn(["snekky", "-v"]);
+            return true;
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+    }
+
+    document.addEventListener("load", () => {
+        snekkyInstalled = checkSnekkyInstallation();   
+    });
 
     function handleTabClose(name, path) {
         let targetTab;
@@ -243,8 +257,8 @@ import { afterUpdate } from "svelte";
         </MenuBarItem>
 
         <MenuBarItem title="Run">
-            <MenuPopupItem text="Run current file..." identifier="run.run" onClick={handleMenuButtonClick} keyCombination="F5" disabled={currentFile.path === null} />
-            <MenuPopupItem text="Recompile" identifier="run.recompile" onClick={handleMenuButtonClick} disabled={currentFile.path === null} />
+            <MenuPopupItem text="Run current file..." identifier="run.run" onClick={handleMenuButtonClick} keyCombination="F5" disabled={currentFile.path === null || !snekkyInstalled} />
+            <MenuPopupItem text="Recompile" identifier="run.recompile" onClick={handleMenuButtonClick} disabled={currentFile.path === null || !snekkyInstalled} />
         </MenuBarItem>
 
         <MenuBarItem title="Help">
