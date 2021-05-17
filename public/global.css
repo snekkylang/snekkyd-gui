@@ -13,6 +13,16 @@
     horizontal-scrollbar: sscrollbar;
 }
 
+html {
+    background: transparent;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+html[window-state="maximized"] {
+    border: window-frame-width solid transparent;
+}
+
 @set sscrollbar {  
     .next,
     .prev { 
