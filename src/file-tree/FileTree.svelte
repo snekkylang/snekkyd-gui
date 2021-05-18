@@ -30,7 +30,9 @@
 </script>
 
 <div class="tree">
-    <Folder name={rootFile} files={root} root expanded depth={0} {onFileChange} />
+    {#if root.length > 0}
+        <Folder name={rootFile} files={root} root expanded depth={0} {onFileChange} />
+    {/if}
 </div>
 
 <style>
