@@ -14,10 +14,11 @@
     let files = {};
 
     let editorTabs = [];
-    let code = "";
     let currentFile = {
         name: "None",
-        path: null
+        path: null,
+        code: "",
+        instructions: []
     };
 
     try {
@@ -55,10 +56,11 @@
 
         editorTabs = editorTabs;
         let currentTab = editorTabs.find(tab => tab.active);
-        code = files[currentTab.path];
         currentFile = {
             name: currentTab.name,
-            path: currentTab.path
+            path: currentTab.path,
+            code: files[currentTab.path].code,
+            instructions: files[currentTab.path].instructions
         };
     }
 
@@ -93,10 +95,11 @@
             } else if (targetTabIndex === 0 && editorTabs.length > 1) {
                 handleFileChange(editorTabs[1].name, editorTabs[1].path);
             } else {
-                code = "";
                 currentFile = {
                     name: "None",
-                    path: null
+                    path: null,
+                    code: "",
+                    instructions: []
                 };
             }
         }
@@ -110,15 +113,26 @@
 
     function openBytecodeFile(path) {
         const content = btoa(String.fromCharCode.apply(null, new Uint8Array(fs.$readfile(path))));
+        const snekkyP = SnekkyP.fromBase64(content);
         const decompiled = SnekkyDecompiler.decompileBase64(content);
         rootFile = path.split("/").pop();
         editorTabs = [];
-        code = "";
         currentFile = {
             name: "None",
-            path: null
+            path: null,
+            code: "",
+            instructions: []
         };
-        files = decompiled.h;
+
+        files = {};
+        for (const fileName in decompiled.h) {
+            files[fileName] = {
+                code: decompiled.h[fileName],
+                instructions: snekkyP.getInstructions(fileName)
+            };
+        }
+
+        console.log(JSON.stringify(files));
     }
 
     function applyPathFixes(path) {
@@ -269,7 +283,7 @@
     <frameset cols="auto, *" class="main-content">
         <FileTree {files} {rootFile} onFileChange={handleFileChange} />
         <splitter />
-        <EditorView {logContent} {code} {editorTabs} onFileChange={handleFileChange} onTabClose={handleTabClose} onCodeChange={handleCodeChange} />
+        <EditorView {logContent} code={currentFile.code} instructions={currentFile.instructions} {editorTabs} onFileChange={handleFileChange} onTabClose={handleTabClose} onCodeChange={handleCodeChange} />
     </frameset>
 </main>
 
