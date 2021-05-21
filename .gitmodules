@@ -1,6 +1,6 @@
-[submodule "snekky"]
-	path = snekky
-	url = https://github.com/snekkylang/snekky
 [submodule "snekkyd"]
 	path = snekkyd
 	url = https://github.com/snekkylang/snekkyd
+[submodule "snekkyp"]
+	path = snekkyp
+	url = https://github.com/snekkylang/snekkyp
