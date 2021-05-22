@@ -21,11 +21,11 @@
     </div>
 
     <frameset rows="*, auto">
-        <frameset cols="*, *">
+<!--         <frameset cols="*, *"> -->
             <Editor {onCodeChange} value={code} />
-            <splitter />
+<!--             <splitter />
             <BytecodeViewer value={instructions} />
-        </frameset>
+        </frameset> -->
 
         <Log content={logContent} />
     </frameset>
