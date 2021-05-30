@@ -108,12 +108,12 @@
     }
 
     function handleCodeChange(code) {
-        files[currentFile.path] = code;
+        files[currentFile.path].code = code;
     }
 
     function openBytecodeFile(path) {
         const content = btoa(String.fromCharCode.apply(null, new Uint8Array(fs.$readfile(path))));
-        const snekkyP = SnekkyP.fromBase64(content);
+        //const snekkyP = SnekkyP.fromBase64(content);
         const decompiled = SnekkyDecompiler.decompileBase64(content);
         rootFile = path.split("/").pop();
         editorTabs = [];
@@ -128,11 +128,9 @@
         for (const fileName in decompiled.h) {
             files[fileName] = {
                 code: decompiled.h[fileName],
-                instructions: snekkyP.getInstructions(fileName)
+                instructions: [] // snekkyP.getInstructions(fileName)
             };
         }
-
-        console.log(JSON.stringify(files));
     }
 
     function applyPathFixes(path) {
@@ -149,7 +147,7 @@
             }
                 
             for (let filePath in files) {
-                let content = files[filePath];
+                let content = files[filePath].code;
                 const fileDir = filePath.substring(0, filePath.lastIndexOf("/"));
                 createDirRecursive(baseDir, fileDir);
                 const file = await fs.open(`${baseDir}/${filePath}`, "w+", 0o666);
